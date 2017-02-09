@@ -1,4 +1,4 @@
-package assignments;
+package assignments.term1;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class Assignment4
 		boolean isRetweet = false;
 
 		String tweet;
-		
+
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Please enter a tweet:");
@@ -25,29 +25,15 @@ public class Assignment4
 
 		for (i = 0; i < length; i++)
 		{
-			if (i < length-2
-					&& ( tweet.charAt(i) == 'R' || tweet.charAt(i) == 'r' )  
-					&& ( tweet.charAt(i + 1) == 'T' || tweet.charAt(i + 1) == 't' ) 
-					&& tweet.charAt(i + 2) == ':')
-			{
+			if (i < length - 2 && (tweet.charAt(i) == 'R' || tweet.charAt(i) == 'r')
+							&& (tweet.charAt(i + 1) == 'T' || tweet.charAt(i + 1) == 't') && tweet.charAt(i + 2) == ':')
 				isRetweet = true;
-			}
 
-			if (i < length-1 
-					&& tweet.charAt(i) == '#' 
-					&& tweet.charAt(i+1) != '\t' 
-					&& tweet.charAt(i+1) != ' ')
-			{
+			if (i < length - 1 && tweet.charAt(i) == '#' && tweet.charAt(i + 1) != '\t' && tweet.charAt(i + 1) != ' ')	
 				hashtags++;
-			}
 
-			if (i < length-1
-					&& tweet.charAt(i) == '@' 
-					&& tweet.charAt(i+1) != '\t' 
-					&& tweet.charAt(i+1) != ' ')
-			{
+			if (i < length - 1 && tweet.charAt(i) == '@' && tweet.charAt(i + 1) != '\t' && tweet.charAt(i + 1) != ' ')
 				mentions++;
-			}
 		}
 
 		if (length > 140)
@@ -56,20 +42,14 @@ public class Assignment4
 			return;
 		}
 		else
-		{
 			System.out.println("Length Correct");
-		}
 
 		System.out.println("Number of Mentions: " + mentions);
 		System.out.println("Number of Hashtags: " + hashtags);
 
 		if (isRetweet)
-		{
 			System.out.println("The input was a retweet.");
-		}
 		else
-		{
 			System.out.println("The input was not a retweet.");
-		}
 	}
 }
