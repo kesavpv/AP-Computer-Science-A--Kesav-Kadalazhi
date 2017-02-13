@@ -2,7 +2,7 @@ package assignments.term1;
 
 import java.util.Scanner;
 
-public class Assignment3
+public class Assignment_3
 {
 	public static void main(String[] args)
 	{
