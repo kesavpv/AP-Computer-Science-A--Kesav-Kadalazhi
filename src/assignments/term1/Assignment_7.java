@@ -18,7 +18,11 @@ public class Assignment_7
 		System.out.println("\n\nSecond binary number:");
 		printBin(convertToBinary(num2));
 		System.out.println("\n\nAdded:");
-		printBin(convertToBinary(num1 + num2));
+		
+		if( num1+num2 > 0)
+			System.out.println("Error: overflow");
+		
+		printBin(addBin(convertToBinary(num1), convertToBinary(num2)));
 		
 		scan.close();
 	}
@@ -27,11 +31,10 @@ public class Assignment_7
 	{
 		int binary[] = new int[8], i = 7;
 		
-		while(i >= 0)
+		for(;i > 0;i--)
 		{
-			binary[8-i-1] = b / (int)Math.pow(2, i) > 0 ? 1 : 0;
+			binary[7-i] = ( b / (int)Math.pow(2, i) ) > 0 ? 1 : 0;
 			b %= Math.pow(2, i);
-			i--;
 		}
 		
 		return binary;
@@ -42,7 +45,19 @@ public class Assignment_7
 			System.out.print(b[i]+" ");
 	}
 	
-	public int[] addBin(int a, int b) {
-		return convertToBinary(a+b);
+	public static int[] addBin(int[] a, int[] b)
+	{
+		int sum[] = new int[8], carry = 0;
+		
+		for(int i = 7; i > 0;i--)
+		{
+			if(a[i]+b[i]+carry > 1)
+			{
+				carry = 1;
+				sum[i] = 1;
+			}
+		}	
+		
+		return sum;
 	}
 }

@@ -2,111 +2,14 @@ package assignments.term2;
 
 public class Assignment_2_Part_1
 {
-
-}
-
-class Light
-{
-	private boolean on;
-	private boolean burntOut;
-	private String color = "";
-
-	/**
-	 * Default constructor that sets the bulb to on, not burnt out, and "white".
-	 */
-	public Light()
-	{
-		
-	}
-
-	/**
-	 * This constructor sets the variable "on" to the parameter o. The burntOut
-	 * variable is set to the parameter b. If burntOut
-	 * is true, on is set to false, no matter what value is stored in o.
-	 * The color variable is set to the parameter c only if c is "red", "green"
-	 * or "blue". The constructor ignores the case of the value in c. If c holds
-	 * any value other than "red", "green" or "blue", the constructor sets
-	 * color to "white".
-	 * 
-	 * @param o
-	 * @param b
-	 * @param c
-	 */
-	public Light(boolean o, boolean b, String c)
-	{
-		
-	}
-
-	/**
-	 * The toString method returns a String with the Light in the format:
-	 * red off burnt out
-	 * green on not burnt out
-	 * 
-	 * Notice there is a tab between the value for color and "off"/"on"
-	 * and one space before the "burnt out" or "not burnt out".
-	*/
-	public String toString()
-	{
-		return "";
-	}
-
-	/**
-	 * This method changes the bulb from on to off, or visa versa. If the
-	 * burntOut variable is true, then the on variable may only be set to false.
-	 */
-	public void flip()
-	{
-	}
-
-	/**
-	 * The getColor method returns the color of the bulb.
-	 * @return
-	 */
-	public String getColor()
-	{
-		return "";
-	}
-
-	/**
-	 * The setColor method sets the color of the Light. The color variable is
-	 * set to c only if c is "red", "green" or "blue". The method ignore the
-	 * case of the value in c. If c holds any value other than "red", "green"
-	 * or "blue", color will be set to "white".
-	 */
-	public void setColor(String c)
-	{
-	}
-
-	/**
-	 * The isOn method returns true if on, false otherwise.
-	 * @return
-	 */
-	public boolean isOn()
-	{
-		return false;
-	}
-
-	/**
-	 * The burnOut method sets the variable burntOut to true.
-	 */
-	public void burnOut()
-	{
-	}
-
 	public static void main(String[] args)
 	{
-
-		/*
-		 * The main method allows you to run Light on its own, with a built-in
-		 * tester.
-		 */
-
 		// *************************************************************************
 		// 1. Test Light()
 		// *************************************************************************
 		Light light1 = new Light();
 		System.out.println("1. Test Light()");
-		testLight(light1, true, false, "white", "white\ton not burnt out");
+		Light.testLight(light1, true, false, "white", "white\ton not burnt out");
 
 		// *************************************************************************
 		// 2. Test Light(boolean b, boolean o, String c)
@@ -116,7 +19,7 @@ class Light
 		// Notice that since the light bulb is "burnt out", the value of "on"
 		// gets set to false. Also, the color should get saved in all lower case
 		// as "green", not "GreeN".
-		testLight(light2, false, true, "green", "green\toff burnt out");
+		Light.testLight(light2, false, true, "green", "green\toff burnt out");
 
 		// *************************************************************************
 		// 3. Test burnOut()
@@ -125,7 +28,7 @@ class Light
 		// light1 is not burnt out. Lets call burnOut on light1 and make sure it
 		// gets burnt out and turned off
 		light1.burnOut();
-		testLight(light1, false, true, "white", "white\toff burnt out");
+		Light.testLight(light1, false, true, "white", "white\toff burnt out");
 
 		// *************************************************************************
 		// 4. Test flip()
@@ -135,18 +38,18 @@ class Light
 		// light3 is currently on and not burnt out. Lets flip the light off and
 		// on and see if it works properly.
 		System.out.println("light3 is on");
-		testLight(light3, true, false, "white", "white\ton not burnt out");
+		Light.testLight(light3, true, false, "white", "white\ton not burnt out");
 		light3.flip();
 		System.out.println("now light3 should be off");
-		testLight(light3, false, false, "white", "white\toff not burnt out");
+		Light.testLight(light3, false, false, "white", "white\toff not burnt out");
 		light3.flip();
 		System.out.println("now light3 should be back on");
-		testLight(light3, true, false, "white", "white\ton not burnt out");
+		Light.testLight(light3, true, false, "white", "white\ton not burnt out");
 		// Try to flip light1 on - this should fail since light1 is burnt out.
 		// light1 should stay off
 		System.out.println("light1 is burned out and off, we can't flip it on");
 		light1.flip();
-		testLight(light1, false, true, "white", "white\toff burnt out");
+		Light.testLight(light1, false, true, "white", "white\toff burnt out");
 
 		// *************************************************************************
 		// 5. Test isOn()
@@ -189,17 +92,128 @@ class Light
 		// *************************************************************************
 		System.out.println("\n7. Test setColor(String)");
 		light1.setColor("red");
-		System.out.println("*** " + testLightColor(light1, "red"));
+		System.out.println("*** " + Light.testLightColor(light1, "red"));
 		light1.setColor("BLUE"); // should set light to blue
-		System.out.println("*** " + testLightColor(light1, "blue"));
+		System.out.println("*** " + Light.testLightColor(light1, "blue"));
 		light1.setColor("yellow"); // yellow is not allowed, should set light to
 									// white
-		System.out.println("*** " + testLightColor(light1, "white"));
+		System.out.println("*** " + Light.testLightColor(light1, "white"));
 	}
+}
+
+class Light
+{
+	private boolean on;
+	private boolean burntOut;
+	private String color = "";
+
+	/**
+	 * Default constructor that sets the bulb to on, not burnt out, and "white".
+	 */
+	public Light()
+	{
+		on = true;
+		burntOut = false;
+		color = "white";
+	}
+
+	/**
+	 * This constructor sets the variable "on" to the parameter o. The burntOut
+	 * variable is set to the parameter b. If burntOut
+	 * is true, on is set to false, no matter what value is stored in o.
+	 * The color variable is set to the parameter c only if c is "red", "green"
+	 * or "blue". The constructor ignores the case of the value in c. If c holds
+	 * any value other than "red", "green" or "blue", the constructor sets
+	 * color to "white".
+	 * 
+	 * @param on
+	 * @param burntOut
+	 * @param color
+	 */
+	public Light(boolean on, boolean burntOut, String color)
+	{
+		this.on = on;
+		this.burntOut = burntOut;
+		
+		if(burntOut)
+			this.on = false;
+		
+		color = color.toLowerCase();
+		
+		if(color.equals("red") || color.equals("green") || color.equals("blue"))
+			this.color = color;
+		else
+			this.color = "white";
+	}
+
+	/**
+	 * The toString method returns a String with the Light in the format:
+	 * red off burnt out
+	 * green on not burnt out
+	 * 
+	 * Notice there is a tab between the value for color and "off"/"on"
+	 * and one space before the "burnt out" or "not burnt out".
+	*/
+	public String toString() {
+		return color+"\t"+(on?"on":"off")+" "+(burntOut?"burnt out":"not burnt out");
+	}
+
+	/**
+	 * This method changes the bulb from on to off, or visa versa. If the
+	 * burntOut variable is true, then the on variable may only be set to false.
+	 */
+	public void flip() {
+		on = !on;
+		if(burntOut)
+			on = false;
+	}
+
+	/**
+	 * The getColor method returns the color of the bulb.
+	 * @return
+	 */
+	public String getColor() {
+		return color;
+	}
+
+	/**
+	 * The setColor method sets the color of the Light. The color variable is
+	 * set to c only if c is "red", "green" or "blue". The method ignore the
+	 * case of the value in c. If c holds any value other than "red", "green"
+	 * or "blue", color will be set to "white".
+	 */
+	public void setColor(String color)
+	{
+		color = color.toLowerCase();
+		
+		if(color.equals("red") || color.equals("green") || color.equals("blue"))
+			this.color = color;
+		else
+			this.color = "white";
+	}
+
+	/**
+	 * The isOn method returns true if on, false otherwise.
+	 * @return
+	 */
+	public boolean isOn() {
+		return on;
+	}
+
+	/**
+	 * The burnOut method sets the variable burntOut to true.
+	 */
+	public void burnOut()
+	{
+		burntOut = true;
+		on = false;
+	}
+
+	
 
 	// Private helper methods
 
-	private static void testLight(Light light, boolean o, boolean b, String c, String string)
+	public static void testLight(Light light, boolean o, boolean b, String c, String string)
 	{
 		System.out.println("*** " + testLightOn(light, o));
 		System.out.println("*** " + testLightburntOut(light, b));
@@ -207,7 +221,7 @@ class Light
 		System.out.println("*** " + testLightToString(light, string));
 	}
 
-	private static String testLightOn(Light bulb, boolean o)
+	public static String testLightOn(Light bulb, boolean o)
 	{
 		if ((bulb.on && !o) || (!bulb.on && o))
 		{
@@ -219,7 +233,7 @@ class Light
 		}
 	}
 
-	private static String testLightburntOut(Light light, boolean b)
+	public static String testLightburntOut(Light light, boolean b)
 	{
 		if ((light.burntOut && !b) || (!light.burntOut && b))
 		{
@@ -232,7 +246,7 @@ class Light
 		}
 	}
 
-	private static String testLightColor(Light light, String c)
+	public static String testLightColor(Light light, String c)
 	{
 		if (!light.color.equals(c))
 		{
@@ -245,7 +259,7 @@ class Light
 		}
 	}
 
-	private static String testLightToString(Light light, String string)
+	public static String testLightToString(Light light, String string)
 	{
 		String output;
 
