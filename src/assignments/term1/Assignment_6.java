@@ -1,5 +1,6 @@
 package assignments.term1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Assignment_6
@@ -12,31 +13,41 @@ public class Assignment_6
 
 		int[] array1 = new int[10000], array2 = new int[10000];
 
-		System.out.println(
-						"Enter the values for the first array, up to 10000 values, enter zero or a negative number to quit");
+		boolean flag = false;
+		
+		System.out.println("Enter the values for the first array, up to 10000 values, enter zero or a negative number to quit");
 		while (n > 0)
 		{
 			n = scan.nextInt();
 			i++;
+			
 			if (n > 0)
+			{
 				array1[i] = n;
+				if(i > 0 && array1[i-1] > n)
+					flag = true;
+			}
 			else
 				break;
 		}
-
+		
 		int length1 = i;
-
+		
 		n = 1;
 		i = -1;
 
-		System.out.println(
-						"Enter the values for the first array, up to 10000 values, enter zero or a negative number to quit");
+		System.out.println("Enter the values for the first array, up to 10000 values, enter zero or a negative number to quit");
 		while (n > 0)
 		{
 			n = scan.nextInt();
 			i++;
+			
 			if (n > 0)
+			{
 				array2[i] = n;
+				if(i > 0 && array1[i-1] > n)
+					flag = true;
+			}
 			else
 				break;
 		}
@@ -59,21 +70,24 @@ public class Assignment_6
 			System.out.print(array2[i] + " ");
 		}
 
-		int[] merged = new int[Math.max(length1, length2)];
-
-		int j = 0;
-
-		System.out.println("\n\nMerged Array: ");
-		for (i = 0; i < merged.length; i++)
+		if(flag)
+			System.out.println("\n\nERROR: Array not in correct order");
+		else
 		{
-			merged[i] = Math.min(array1[i], array2[i]);
-
-			while (array1[j] > array2[j])
-			{
-				//
-			}
-
-			System.out.print(merged[i] + " ");
+			int[] merged = new int[length1 + length2];
+			
+			System.out.println("\n\nMerged Array: ");
+			
+			for (i = 0; i < length1; i++)
+				merged[i] = array1[i];
+			
+			for (i = 0; i < length2; i++)
+				merged[length1 + i] = array2[i];
+			
+			Arrays.sort(merged);
+			
+			for (i = 0; i < merged.length; i++)
+				System.out.print(merged[i]+" ");
 		}
 
 		scan.close();

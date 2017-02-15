@@ -19,7 +19,7 @@ public class Assignment_7
 		printBin(convertToBinary(num2));
 		System.out.println("\n\nAdded:");
 		
-		if( num1+num2 > 0)
+		if( num1+num2 > 255)
 			System.out.println("Error: overflow");
 		
 		printBin(addBin(convertToBinary(num1), convertToBinary(num2)));
@@ -31,7 +31,7 @@ public class Assignment_7
 	{
 		int binary[] = new int[8], i = 7;
 		
-		for(;i > 0;i--)
+		for(;i >= 0;i--)
 		{
 			binary[7-i] = ( b / (int)Math.pow(2, i) ) > 0 ? 1 : 0;
 			b %= Math.pow(2, i);
@@ -49,14 +49,37 @@ public class Assignment_7
 	{
 		int sum[] = new int[8], carry = 0;
 		
-		for(int i = 7; i > 0;i--)
+		for(int i = 7; i >= 0;i--)
 		{
-			if(a[i]+b[i]+carry > 1)
+			switch(a[i] + b[i] + carry)
 			{
-				carry = 1;
-				sum[i] = 1;
+				case 3:
+				{
+					carry = 1;
+					sum[i] = 1;
+					break;
+				}
+				case 2:
+				{
+					carry = 1;
+					sum[i] = 0;
+					break;
+				}
+				case 1:
+				{
+					carry = 0;
+					sum[i] = 1;
+					break;
+				}
+				case 0:
+				{
+					carry = 0;
+					sum[i] = 0;
+					break;
+				}
+				default: break;
 			}
-		}	
+		}
 		
 		return sum;
 	}
