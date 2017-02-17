@@ -6,15 +6,15 @@ public class Lesson_31_Activity
 {
 	public static void main(String args[])
 	{
-		Scanner scan = new Scanner(System.in);
-		
-		
 		String word;
 		int num = 0;
+
+		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Enter a number in base 8:");
 		word = scan.next();
-		
+
+		scan.close();
 		
 		if(word.length() > 8)
 		{
@@ -32,5 +32,6 @@ public class Lesson_31_Activity
 		
 		if(num != 0)
 			System.out.println(num);
+		
 	}
 }
