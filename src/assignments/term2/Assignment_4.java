@@ -1,58 +1,10 @@
 package assignments.term2;
 
-public class Assignment_1
+public class Assignment_4
 {
-	public static void main(String[] args)
-	{
-		Time time1 = new Time(14, 56);
-		System.out.println("time1: " + time1);
-		System.out.println("convert time1 to standard time: " + time1.convert());
-		System.out.println("time1: " + time1);
-		System.out.print("increment time1 five times: ");
-		time1.increment();
-		time1.increment();
-		time1.increment();
-		time1.increment();
-		time1.increment();
-		System.out.println(time1 + "\n");
-
-		Time time2 = new Time(-7, 12);
-		System.out.println("time2: " + time2);
-		System.out.print("increment time2 67 times: ");
-		for (int i = 0; i < 67; i++)
-			time2.increment();
-		System.out.println(time2);
-		System.out.println("convert to time2 standard time: " + time2.convert());
-		System.out.println("time2: " + time2 + "\n");
-
-		Time time3 = new Time(5, 17);
-		System.out.println("time3: " + time3);
-		System.out.print("convert time3: ");
-		System.out.println(time3.convert());
-
-		Time time4 = new Time(12, 15);
-		System.out.println("\ntime4: " + time4);
-		System.out.println("convert time4: " + time4.convert());
-
-		Time time5 = new Time(0, 15);
-		System.out.println("\ntime5: " + time5);
-		System.out.println("convert time5: " + time5.convert());
-
-		Time time6 = new Time(24, 15);
-		System.out.println("\ntime6: " + time6);
-		System.out.println("convert time6: " + time6.convert());
-
-		Time time7 = new Time(23, 59);
-		System.out.println("\ntime7: " + time7);
-		System.out.println("convert time7: " + time7.convert());
-		time7.increment();
-		System.out.println("increment time7: " + time7);
-		System.out.println("convert time7: " + time7.convert());
-	}
-
 }
 
-class Time
+class Time2 implements Comparable<Time2>
 {
 	private int hour;
 	private int minute;
@@ -60,7 +12,7 @@ class Time
 	/**
 	 * Default constructor that sets time to 0000.
 	 */
-	public Time()
+	public Time2()
 	{
 		hour = 0;
 		minute = 0;
@@ -71,7 +23,7 @@ class Time
 	 * hour to 0. If m is between 0 and 59 inclusive, set the minutes to m.
 	 * Otherwise, set the minutes to 0.
 	 */
-	public Time(int hour, int minute)
+	public Time2(int hour, int minute)
 	{
 		this();
 
@@ -150,5 +102,29 @@ class Time
 		}
 		else
 			minute++;
+	}
+
+	public int getHour() {
+		return hour;
+	}
+	
+	public int getMinute() {
+		return minute;
+	}
+	
+	public String difference(Time2 t)
+	{
+		return "";
+	}
+	
+	@Override
+	public int compareTo(Time2 o)
+	{
+		if(getHour()*60+getMinute() < o.getHour()*60+o.getMinute())
+			return -1;
+		else if(getHour()*60+getMinute() < o.getHour()*60+o.getMinute())
+			return 1;
+		else
+			return 0;
 	}
 }
