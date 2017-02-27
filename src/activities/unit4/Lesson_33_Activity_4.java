@@ -14,11 +14,12 @@ public class Lesson_33_Activity_4
 
 	public static void reverse(int[] array)
 	{
-		for (int i = 0; i < array.length; i++)
-		{
-			System.out.print(array[i] + ", \t");
-			array[i] = array[array.length - 1 - i];
-			System.out.println(array[i] + ", ");
-		}
+		int[] copy = new int[array.length];
+		
+		for (int i = 0;i < array.length;i++)
+			copy[i] = array[i];
+		
+		for(int i = 0;i < array.length;i++)
+			array[i] = copy[array.length-i-1];
 	}
 }
